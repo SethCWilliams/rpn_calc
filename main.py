@@ -8,7 +8,7 @@ OPERATORS = {
 }
 
 
-def rpn_calculator():
+def rpn_calculator(expression):
     stack = []
     tokens = expression.split()
 
