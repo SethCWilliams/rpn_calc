@@ -35,7 +35,6 @@ import pytest
     ],
 )
 def test_rpn_calculator_paths(capsys, monkeypatch, input_value_list, captured_out):
-    # Test addition
     input_values = input_value_list
     monkeypatch.setattr("builtins.input", lambda _: input_values.pop(0))
     rpn_calculator()
