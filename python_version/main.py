@@ -1,12 +1,6 @@
 import operator
-
-
-OPERATORS = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-    "/": operator.truediv,
-}
+from token_handlers import handle_operator, handle_operand
+from enums import HANDLED_OPERATORS as OPERATORS
 
 
 def rpn_calculator():
@@ -21,26 +15,9 @@ def rpn_calculator():
 
         for token in tokens:
             if token in OPERATORS:
-                if len(stack) < 2:
-                    print(f"Error: Not enough operands for operator '{token}'")
-                    continue
-                operand2, operand1 = stack.pop(), stack.pop()
-                try:
-                    result = OPERATORS[token](operand1, operand2)
-                    stack.append(result)
-                except ZeroDivisionError:
-                    print("Error: Division by zero")
-                    stack.append(operand1)
-                    stack.append(operand2)
+                handle_operator(token, stack)
             else:
-                try:
-                    # Try converting the token to a float
-                    value = float(token)
-                    stack.append(value)
-                except ValueError:
-                    print(f"Error: Invalid input '{token}'")
-                except Exception as e:
-                    print("Error:", e)
+                handle_operand(token, stack)
 
         if stack:
             print("Current Stack:", stack)
