@@ -5,7 +5,10 @@ import pytest
 @pytest.mark.parametrize(
     "input_value_list,captured_out",
     [
-        (["3 4 +", "q"], "Current Stack: [7.0]\nFinal Stack: [7.0]"),  # Test addition
+        (
+            ["3 4       +", "q"],
+            "Current Stack: [7.0]\nFinal Stack: [7.0]",
+        ),  # Test addition and extra whitespace
         (
             ["10", "5 -", "q"],
             "Current Stack: [10.0]\nCurrent Stack: [5.0]\nFinal Stack: [5.0]\nCalculator has been terminated.\n",
