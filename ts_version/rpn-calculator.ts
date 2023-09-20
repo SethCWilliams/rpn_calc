@@ -15,14 +15,9 @@ function isValidToken(token: string): boolean {
   return !isNaN(parseFloat(token)) || token in OPERATORS;
 }
 
-function handleOperator(
-  token: string,
-  stack: number[],
-  validInput: boolean
-): void {
+function handleOperator(token: string, stack: number[]): void {
   if (stack.length < 2) {
     console.log(`Error: Not enough operands for operator '${token}'`);
-    validInput = false;
     return;
   }
   // can assert that stack.length >= 2 thanks to if statement above
@@ -32,17 +27,11 @@ function handleOperator(
   stack.push(roundToReadable(result));
 }
 
-function handleOperand(
-  token: string,
-  stack: number[],
-  validInput: boolean
-): void {
+function handleOperand(token: string, stack: number[]): void {
   const value = parseFloat(token);
+  // really don't need the if statement here thanks to isValidToken, but it protects against future changes
   if (!isNaN(value)) {
     stack.push(roundToReadable(value));
-  } else {
-    console.log(`Error: Invalid input '${token}'`);
-    validInput = false;
   }
 }
 
@@ -73,15 +62,16 @@ function rpnCalculator(): void {
 
       for (const token of tokens) {
         if (isValidToken(token)) {
+          // only numbers and operators are valid tokens
           if (token in OPERATORS) {
-            handleOperator(token, stack, validInput);
+            handleOperator(token, stack);
           } else {
-            handleOperand(token, stack, validInput);
+            handleOperand(token, stack);
           }
         } else {
           console.log(`Error: Invalid input '${token}'`);
           validInput = false;
-          stack.length = 0; // Reset the stack to its previous state
+          stack.length = 0; // Reset the stack to empty
           stack.push(...prevStack); // Restore the previous stack
         }
       }
