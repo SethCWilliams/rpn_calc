@@ -9,10 +9,10 @@ One is in Python and will allow the user a lot more leeway with their inputs, an
 
 That's a good question, and there are a few reasons:
 1. Python is my daily driver, so I wanted to write something that felt more clean, concise, and comfortable.
-2. TS is obviously what the team uses, and while I'm not comfortable with structuring projects and things of that nature, I wanted to show that I can get the job done.
+2. TS is what the team uses, so I wanted to write something that shows I can work with TypeScript as well.
 3. I made them different so it didn't seem like I just got an AI tool to rewrite things + a couple of other reasons, but I'll talk about those in the **Features** section.
 
-This is an _attempt_ to show skill in Python and assertiveness in TypeScript... lol.
+This is an _attempt_ to show skill in Python and assertiveness in TypeScript.
 
 I do want to note that while I don't have professional experience working with TypeScript, I do have a lot of experience with
 [Pydantic](https://docs.pydantic.dev/latest/), as in I use it daily, which is basically JS:TS::Python:Pydantic
@@ -96,6 +96,9 @@ ts-node rpn-calculator.js
 
 You'll notice that I don't have tests for the TS application. I honestly just ran out of time to dig into Jest. I do have it tracked in my issues here, so it's not an oversight, just something I ommitted for the sake of time since the Python application does have pretty expansive testing. 
 
-You'll also notice that the Python calculator is more organized than the TS calculator. Another ommission for the sake of time since there are two separate calculators. Figured showing code structure in one was sufficient, and to be perfectly honest, I didn't want to run into too many hiccups on the TypeScript calculator with exporting functions, compiling multiple files, etc. I'm still fresh enough with TypeScript that I'm working my way through Maximillian Schwarzmuller's [Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/) course, so I could be prone to fall for 'gotchas' and I didn't want to spend my time untangling that. If needed, I can go back and make the code a little more DRY, separating some code out into utility funtions, separating concerns into different files, etc. 
+You'll also notice that the Python calculator is more organized than the TS calculator. Another ommission for the sake of time since there are two separate calculators. Figured showing code structure in one was sufficient, and to be perfectly honest, I didn't want to run into too many hiccups on the TypeScript calculator with exporting functions, compiling multiple files, etc. I'm still fresh enough with TypeScript that I'm working my way through Maximillian Schwarzmuller's [Understanding TypeScript](https://www.udemy.com/course/understanding-typescript/) course, so I could be prone to fall for 'gotchas' and I didn't want to spend my time untangling that. If needed, I can go back and make the code a little more DRY, separating some code out into utility funtions, separating concerns into different files, etc. I made my choice based on this paragraph in the instructions since it demonstrates well-crafted code in one application, but diminishing code quality for the sake of time in another 
+
+![image](https://github.com/SethCWilliams/rpn_calc/assets/43652084/2dbaa8c7-b4a7-4efc-ac44-60b32272ffaf)
+
 
 ## To exit you can either enter in 'q' or send an end-of-input indicator (ex. CTL + C).
