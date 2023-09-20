@@ -54,15 +54,18 @@ function rpnCalculator(): void {
   });
 
   cliCalculatorInterface.setPrompt(
-    "Enter operand(s) and/or operator(s) (q to quit): "
+    "Enter operand(s) and/or operator(s) (q to quit and c to clear): "
   );
 
   cliCalculatorInterface.prompt();
 
   cliCalculatorInterface.on("line", (line: string) => {
-    if (line.trim().toLowerCase() === "q") {
+    const formattedLine = line.trim().toLowerCase();
+    if (formattedLine === "q") {
       cliCalculatorInterface.close();
       return; // Exit the event handler
+    } else if (formattedLine === "c") {
+      stack.length = 0; // Clear the stack
     } else {
       const tokens = line.trim().split(/\s+/); // Trims whitespace and splits on whitespace
       let validInput = true; // Flag to track input validity
@@ -84,7 +87,7 @@ function rpnCalculator(): void {
       }
 
       if (validInput && stack.length > 0) {
-        console.log("Current Stack:", stack);
+        console.log("Current Operand Stack:", stack);
       } else if (!validInput) {
         console.log(
           "Invalid input. Please format it correctly with valid inputs."
@@ -96,7 +99,7 @@ function rpnCalculator(): void {
 
   cliCalculatorInterface.on("close", () => {
     if (stack.length > 0) {
-      console.log("Final Stack:", stack);
+      console.log("Final Operand Stack:", stack);
     }
     console.log("Calculator has been terminated.");
   });

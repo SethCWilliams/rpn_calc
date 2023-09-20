@@ -7,9 +7,14 @@ def rpn_calculator():
     stack = []
 
     while True:
-        expression = input("Enter operand(s) and/or operator(s) (q to quit): ")
+        expression = input(
+            "Enter operand(s) and/or operator(s) (q to quit or c to clear): "
+        )
         if expression.lower() == "q":
             break
+        if expression.lower() == "c":
+            stack.clear()
+            continue
 
         tokens = expression.split()
 
@@ -20,10 +25,10 @@ def rpn_calculator():
                 handle_operand(token, stack)
 
         if stack:
-            print("Current Stack:", stack)
+            print("Current Operand Stack:", stack)
 
     if stack:
-        print("Final Stack:", stack)
+        print("Final Operand Stack:", stack)
     print("Calculator has been terminated.")
 
 
