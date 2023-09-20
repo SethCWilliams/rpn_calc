@@ -8,7 +8,7 @@ def handle_operator(token, stack):
     operand2, operand1 = stack.pop(), stack.pop()
     try:
         result = OPERATORS[token](operand1, operand2)
-        stack.append(result)
+        stack.append(round(result, 2))
     except ZeroDivisionError:
         print("Error: Division by zero")
         stack.append(operand1)
@@ -17,7 +17,7 @@ def handle_operator(token, stack):
 
 def handle_operand(token, stack):
     try:
-        value = float(token)
+        value = round(float(token), 2)
         stack.append(value)
     except ValueError:
         print(f"Error: Invalid input '{token}'")
