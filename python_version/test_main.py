@@ -7,33 +7,39 @@ import pytest
     [
         (
             ["3 4       +", "q"],
-            "Current Stack: [7.0]\nFinal Stack: [7.0]",
+            "Current Operand Stack: [7.0]\nFinal Operand Stack: [7.0]",
         ),  # Test addition and extra whitespace
         (
             ["10", "5 -", "q"],
-            "Current Stack: [10.0]\nCurrent Stack: [5.0]\nFinal Stack: [5.0]\nCalculator has been terminated.\n",
+            "Current Operand Stack: [10.0]\nCurrent Operand Stack: [5.0]\nFinal Operand Stack: [5.0]\nCalculator has been terminated.\n",
         ),  # Test subtraction and multi-input operands
         (
             ["6", "7", "*", "5", "1", "* *", "q"],
-            "Current Stack: [6.0]\nCurrent Stack: [6.0, 7.0]\nCurrent Stack: [42.0]\nCurrent Stack: [42.0, 5.0]\nCurrent Stack: [42.0, 5.0, 1.0]\nCurrent Stack: [210.0]\nFinal Stack: [210.0]\nCalculator has been terminated.\n",
+            "Current Operand Stack: [6.0]\nCurrent Operand Stack: [6.0, 7.0]\nCurrent Operand Stack: [42.0]\nCurrent Operand Stack: [42.0, 5.0]\nCurrent Operand Stack: [42.0, 5.0, 1.0]\nCurrent Operand Stack: [210.0]\nFinal Operand Stack: [210.0]\nCalculator has been terminated.\n",
         ),  # Test multiplication and single input calculations
-        (["20 4 /", "q"], "Current Stack: [5.0]\nFinal Stack: [5.0]"),  # Test division
-        (["3.5 4.5 +", "q"], "Current Stack: [8.0]\nFinal Stack: [8.0]"),  # Test floats
+        (
+            ["20 4 /", "q"],
+            "Current Operand Stack: [5.0]\nFinal Operand Stack: [5.0]",
+        ),  # Test division
+        (
+            ["3.5 4.5 +", "q"],
+            "Current Operand Stack: [8.0]\nFinal Operand Stack: [8.0]",
+        ),  # Test floats
         (
             ["20 4 /", "5 6 7 +", "- *", "q"],
-            "Current Stack: [5.0]\nCurrent Stack: [5.0, 5.0, 13.0]\nCurrent Stack: [-40.0]\nFinal Stack: [-40.0]\nCalculator has been terminated.\n",
+            "Current Operand Stack: [5.0]\nCurrent Operand Stack: [5.0, 5.0, 13.0]\nCurrent Operand Stack: [-40.0]\nFinal Operand Stack: [-40.0]\nCalculator has been terminated.\n",
         ),  # Test multiple operations
         (
             ["5 0 /", "9 3 +", "q"],
-            "Error: Division by zero\nCurrent Stack: [5.0, 0.0]\nCurrent Stack: [5.0, 0.0, 12.0]\nFinal Stack: [5.0, 0.0, 12.0]\nCalculator has been terminated.\n",
+            "Error: Division by zero\nCurrent Operand Stack: [5.0, 0.0]\nCurrent Operand Stack: [5.0, 0.0, 12.0]\nFinal Operand Stack: [5.0, 0.0, 12.0]\nCalculator has been terminated.\n",
         ),  # Test division by zero
         (
             ["x 9 9 +", "q"],
-            "Error: Invalid input 'x'\nCurrent Stack: [18.0]\nFinal Stack: [18.0]\nCalculator has been terminated.\n",
+            "Error: Invalid input 'x'\nCurrent Operand Stack: [18.0]\nFinal Operand Stack: [18.0]\nCalculator has been terminated.\n",
         ),  # Test invalid input
         (
             ["10 x +", "q"],
-            "Error: Invalid input 'x'\nError: Not enough operands for operator '+'\nCurrent Stack: [10.0]\nFinal Stack: [10.0]\nCalculator has been terminated.\n",
+            "Error: Invalid input 'x'\nError: Not enough operands for operator '+'\nCurrent Operand Stack: [10.0]\nFinal Operand Stack: [10.0]\nCalculator has been terminated.\n",
         ),  # Test multiple errors input
     ],
 )
