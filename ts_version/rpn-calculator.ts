@@ -29,6 +29,7 @@ function handleOperator(token: string, stack: number[]): void {
 
 function handleOperand(token: string, stack: number[]): void {
   const value = parseFloat(token);
+
   // really don't need the if statement here thanks to isValidToken, but it protects against future changes
   if (!isNaN(value)) {
     stack.push(roundToReadable(value));
